@@ -5,7 +5,7 @@ from reconstructapi.serialize import deserialize_shares
 from reconstructapi.shamir import Shamir
 
 def home(request):
-	cid = request.GET.get("computation_id", None)
+	cid = request.POST.get("computation_id", None)
 	r = requests.get("https://safetraceapi.herokuapp.com/api/results", json={'computation_id':cid}, headers={"api_key": "4b6bff10-760e-11ea-bcd4-03a854e8623c"})
 	j = json.loads(r.text)
 	raw_shares = j["shares"]
